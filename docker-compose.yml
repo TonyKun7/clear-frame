@@ -1,7 +1,7 @@
 services:
-  website:
+  bde:
     build: .
-    container_name: website
+    container_name: bde
     ports:
       - '6000:6000'
     env_file:
