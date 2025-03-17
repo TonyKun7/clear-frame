@@ -17,7 +17,7 @@ FROM base AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules /app/node_modules
 ADD . .
-RUN NODE_OPTIONS="--max-old-space-size=2048" node ace build
+RUN node ace build
 
 # Production stage
 FROM base
@@ -25,5 +25,5 @@ ENV NODE_ENV=production
 WORKDIR /app
 COPY --from=production-deps /app/node_modules /app/node_modules
 COPY --from=build /app/build /app
-EXPOSE 3000
+EXPOSE 6000
 CMD ["node", "./bin/server.js"]
